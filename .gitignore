@@ -24,3 +24,5 @@ reports/
 results/cache/
 data/wordlists/MissingWords/
 data/wordlists/MissingWords/
+data/wordlists/MissingWords/
+.claude/
