@@ -1,0 +1,50 @@
+[build-system]
+requires = ["hatchling>=1.24"]
+build-backend = "hatchling.build"
+
+[project]
+name = "stuckword"
+version = "0.1.0"
+description = "EEG markers of word-finding difficulty, towards a low-channel home headband that gives a hint when someone gets stuck on a word."
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "numpy>=1.26",
+    "scipy>=1.11",
+    "pandas>=2.1",
+    "scikit-learn>=1.4",
+    "mne>=1.7",
+]
+
+[project.optional-dependencies]
+# Live recording from the Octopus/PiEEG board via Lab Streaming Layer, and XDF loading.
+acquisition = ["pylsl>=1.16", "pyxdf>=1.16"]
+# Downloading public BIDS datasets from OpenNeuro.
+datasets = ["openneuro-py>=2024.2", "mne-bids>=0.15"]
+dev = ["pytest>=8.0", "ruff>=0.5", "mypy>=1.10"]
+
+[project.scripts]
+stuckword = "stuckword.cli:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/stuckword"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+src = ["src", "tests"]
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "B", "UP", "N", "NPY", "SIM", "RUF"]
+# N803/N806: `X`/`y` are the scikit-learn convention for features/targets.
+ignore = ["N803", "N806"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-ra"
+filterwarnings = ["ignore::DeprecationWarning"]
+
+[tool.mypy]
+python_version = "3.10"
+ignore_missing_imports = true
+warn_unused_ignores = true

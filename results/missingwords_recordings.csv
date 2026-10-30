@@ -1,0 +1,15 @@
+recording,bad_channels_interpolated,missing_epochs_kept,speech_epochs_kept,heldout_auc_0_1200ms
+01 Apr 10:06,Fp1 Fp2,36,38,0.61
+01 Apr 10:35,,48,48,0.694
+01 Apr 11:27,,47,47,0.518
+30 Mar 16:47,Fp1 Fp2 Oz,46,44,0.612
+30 Mar 17:54,Oz,47,47,0.665
+31 Mar 10:18,Oz,48,48,0.697
+31 Mar 11:20,Fp1 Fp2,43,35,0.738
+31 Mar 14:12,,45,39,0.675
+31 Mar 14:36,,48,48,0.73
+31 Mar 15:03,,48,47,0.715
+31 Mar 15:40,Oz,48,48,0.785
+31 Mar 16:37,Oz,38,30,0.739
+31 Mar 17:14,Fp1,48,47,0.744
+31 Mar 18:45,,48,48,0.562

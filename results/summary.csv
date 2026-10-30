@@ -1,0 +1,23 @@
+analysis,metric,value
+missingwords,n_recordings,14
+missingwords,erp_cluster_p_min,0.0025
+missingwords,erp_significant_from_s,0.432
+missingwords,erp_significant_to_s,0.928
+missingwords,decoding_peak_auc,0.6147294157725038
+missingwords,decoding_peak_time_s,0.624
+missingwords,window_model_auc,0.6774756423643347
+missingwords,window_model_p,0.000999000999000999
+missingwords,strongest_onset_shift_s,0.4
+n400,n_participants,5
+n400,trials_kept_per_participant,85 120 119 66 114
+n400,n400_effect_uv_cpz_300_500,-7.189718212566267
+n400,n400_effect_t,-5.901038258598435
+n400,n400_effect_p,0.004126215899117784
+n400,erp_cluster_p_min,0.0625
+n400,within_peak_auc,0.6732815164633347
+n400,within_peak_time_s,0.4609375
+n400,cross_person_auc,0.7036028094158175
+kiloword,WordFrequency_prediction_r,0.6478929587617599
+kiloword,Concreteness_prediction_r,0.3588894632669879
+kiloword,WordFrequency_prediction_p,0.004975124378109453
+kiloword,Concreteness_prediction_p,0.004975124378109453

@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Stuck on the Word</title>
+  <meta name="description" content="A home EEG headband that notices the struggle to recall a word. A PiEEG Octopus 16 Challenge project, in development.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..500;1,9..144,300..400&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23FBF3EC'/%3E%3Ctext x='16' y='22' font-family='Georgia' font-size='18' text-anchor='middle' fill='%23C2571A'%3E_%3C/text%3E%3C/svg%3E">
+</head>
+<body>
+  <!-- Neurowaves with drifting letters along both edges (drawn by main.js). -->
+  <svg class="side-wave side-wave-left" aria-hidden="true"></svg>
+  <svg class="side-wave side-wave-right" aria-hidden="true"></svg>
+
+  <header class="site-header">
+    <a class="logo" href="#top">Stuck on the <span class="logo-gap">Word</span></a>
+    <nav aria-label="Sections">
+      <a href="#problem">Problem</a>
+      <a href="#idea">Idea</a>
+      <a href="#plan">Plan</a>
+      <a href="#updates">Updates</a>
+    </nav>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <p class="status"><span class="dot" aria-hidden="true"></span>In development · PiEEG Octopus 16 Challenge</p>
+      <h1>It's on the tip of my <em>tongue</em></h1>
+      <p class="pitch">A home EEG headband that notices the struggle to recall a word, first for
+      language learners, later for people relearning language after a stroke.</p>
+      <div class="flashcard" aria-hidden="true">
+        <div class="flashcard-word" id="flashcard-word">velmora</div>
+        <div class="flashcard-rule"></div>
+        <div class="flashcard-answer"><span id="flashcard-answer"></span><span class="caret"></span></div>
+        <svg class="flashcard-wave" viewBox="0 0 600 56" preserveAspectRatio="none">
+          <path id="brain-wave" d="M0,28 H600"></path>
+        </svg>
+        <p class="flashcard-note">A flashcard in a language nobody speaks. A sketch of the idea, not a recording.</p>
+      </div>
+    </section>
+
+    <!-- Problem: what happens vs what the app sees -->
+    <section id="problem" class="section">
+      <h2>The problem</h2>
+      <div class="attempts" role="table" aria-label="Three flashcard attempts and what the app records">
+        <div class="attempts-head" role="row">
+          <span role="columnheader">What happens in my head</span>
+          <span role="columnheader">What the app sees</span>
+        </div>
+        <div class="attempt" role="row">
+          <div role="cell">
+            <span class="search search-short"></span>
+            <span class="attempt-label">knew it · 1 s</span>
+          </div>
+          <span class="outcome outcome-right" role="cell">✓ right</span>
+        </div>
+        <div class="attempt" role="row">
+          <div role="cell">
+            <span class="search search-long"></span>
+            <span class="attempt-label">dug it out · 10 s</span>
+          </div>
+          <span class="outcome outcome-right" role="cell">✓ right</span>
+        </div>
+        <div class="attempt" role="row">
+          <div role="cell">
+            <span class="search search-cut"></span>
+            <span class="attempt-label">almost there · gave up</span>
+          </div>
+          <span class="outcome outcome-wrong" role="cell">show answer</span>
+        </div>
+      </div>
+      <p class="caption">Ten seconds of searching looks the same as an instant answer, and nobody
+      notices when the first letter would have been enough.</p>
+
+      <div class="stats">
+        <div class="stat">
+          <span class="stat-big">1 in 3</span>
+          <span class="stat-text">stroke survivors get aphasia</span>
+        </div>
+        <div class="stat">
+          <span class="stat-big">almost all</span>
+          <span class="stat-text">types of aphasia include word-finding difficulty</span>
+        </div>
+        <div class="stat">
+          <span class="stat-big">at home</span>
+          <span class="stat-text">is where most practice happens, with no therapist to see when someone is stuck</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Idea: a three-step loop -->
+    <section id="idea" class="section">
+      <h2>The idea</h2>
+      <ol class="flow">
+        <li class="flow-step">
+          <span class="flow-icon flow-word">velmora</span>
+          <span class="flow-text">a word appears</span>
+        </li>
+        <li class="flow-step">
+          <span class="flow-icon"><span class="search search-long search-mini"></span></span>
+          <span class="flow-text">the headband sees “searching”</span>
+        </li>
+        <li class="flow-step">
+          <span class="flow-icon flow-hint">l_____</span>
+          <span class="flow-text">still searching after a few seconds: show the first letter</span>
+        </li>
+      </ol>
+      <p class="caption">If the searching fades, it waits.</p>
+      <div class="path">
+        <span class="path-stop">language learners <small>now</small></span>
+        <span class="path-line" aria-hidden="true"></span>
+        <span class="path-stop path-later">aphasia rehabilitation <small>later</small></span>
+      </div>
+    </section>
+
+    <!-- Plan: four steps -->
+    <section id="plan" class="section">
+      <h2>One week with the Octopus 16</h2>
+      <ol class="plan">
+        <li><span class="when">Days 1–2</span><span class="plan-title">Check the signal</span><span class="plan-text">alpha, blinks, jaw clench</span></li>
+        <li><span class="when">Days 3–4</span><span class="plan-title">Record flashcards</span><span class="plan-text">~200 trials: knew it, tip of the tongue, no idea</span></li>
+        <li><span class="when">Day 5</span><span class="plan-title">Find the channels</span><span class="plan-text">which 3–4 of 16 carry the difference</span></li>
+        <li><span class="when">Days 6–7</span><span class="plan-title">Headband + hint loop</span><span class="plan-text">first letter when the searching lasts</span></li>
+      </ol>
+    </section>
+
+    <section id="updates" class="section">
+      <h2>Updates</h2>
+      <!-- New entries go at the top. -->
+      <ul class="updates">
+        <li>
+          <time datetime="2026-10">October 2026</time>
+          <p>Project page set up. Preparing the flashcard recording script and the analysis code.</p>
+        </li>
+        <li class="next">
+          <time>Next</time>
+          <p>Set up the Octopus 16 and check the signal.</p>
+        </li>
+      </ul>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p><a id="repo-link" href="https://github.com/">Code on GitHub</a> · a project for the <a href="https://www.pieeg.com/octopus16-challenge.html">PiEEG Octopus 16 Challenge</a></p>
+  </footer>
+
+  <script src="main.js" defer></script>
+</body>
+</html>
